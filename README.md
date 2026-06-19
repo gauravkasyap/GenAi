@@ -14,7 +14,7 @@ project-root/
       services/
       utils/
     public/
-    package.json
+    package.js
     vite.config.js
   backend/
     src/
