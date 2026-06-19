@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import json
 import re
-from urllib import request
+from urllib import error, request
 
 from src.config.settings import (
     APP_DEBUG,
@@ -76,10 +76,38 @@ def analyze_with_llm(payload: dict, detected_symptoms: set[str], fallback_displa
     if not provider:
         return None
 
+
+def answer_general_question(payload: dict) -> dict:
+    provider = active_llm_provider()
+    if not provider:
+        raise RuntimeError("No LLM provider is configured")
+
+    question = _clean_text(payload.get("message") or payload.get("question") or payload.get("text"))
+    if not question:
+        raise ValueError("Please enter a question.")
+
+    response = _post_chat_completion(
+        provider,
+        _messages_for_general_question(payload, question),
+        response_format=None,
+        temperature=0.4,
+    )
+    answer = _extract_message_text(response).strip()
+    if not answer:
+        raise ValueError("The model did not return an answer.")
+
+    return {
+        "answer": answer,
+        "provider": provider,
+        "providerLabel": PROVIDER_CONFIG[provider]["label"],
+        "model": PROVIDER_CONFIG[provider]["model"](),
+    }
+
     try:
         response = _post_chat_completion(
             provider,
             _messages_for(payload, detected_symptoms, fallback_display),
+            response_format={"type": "json_object"},
         )
         content = _extract_message_text(response)
         parsed = _parse_json_object(content)
@@ -142,15 +170,42 @@ def _messages_for(payload: dict, detected_symptoms: set[str], fallback_display: 
     ]
 
 
-def _post_chat_completion(provider: str, messages: list[dict]) -> dict:
+def _messages_for_general_question(payload: dict, question: str) -> list[dict]:
+    language = (payload.get("language") or "en").split("-", 1)[0].lower()
+    return [
+        {
+            "role": "system",
+            "content": (
+                "You are Health AI, a helpful healthcare assistant for a rural care app. "
+                "Answer user questions clearly and briefly in the requested language. "
+                "Do not claim to diagnose. Do not prescribe medicines or dosages. "
+                "For urgent symptoms such as chest pain, trouble breathing, stroke signs, severe bleeding, "
+                "pregnancy bleeding, confusion, or fainting, advise urgent medical care. "
+                f"Requested language code: {language}."
+            ),
+        },
+        {
+            "role": "user",
+            "content": question,
+        },
+    ]
+
+
+def _post_chat_completion(
+    provider: str,
+    messages: list[dict],
+    response_format: dict | None = None,
+    temperature: float = 0.2,
+) -> dict:
     config = PROVIDER_CONFIG[provider]
     api_key = config["api_key"]()
     body = {
         "model": config["model"](),
-        "temperature": 0.2,
-        "response_format": {"type": "json_object"},
+        "temperature": temperature,
         "messages": messages,
     }
+    if response_format:
+        body["response_format"] = response_format
     payload = json.dumps(body).encode("utf-8")
     request_obj = request.Request(
         config["url"],
@@ -158,11 +213,19 @@ def _post_chat_completion(provider: str, messages: list[dict]) -> dict:
         headers={
             "Authorization": f"Bearer {api_key}",
             "Content-Type": "application/json",
+            "Accept": "application/json",
+            "User-Agent": "GenAi-HealthAI/0.2",
         },
         method="POST",
     )
-    with request.urlopen(request_obj, timeout=LLM_TIMEOUT_SECONDS) as response:  # noqa: S310
-        return json.loads(response.read().decode("utf-8"))
+    try:
+        with request.urlopen(request_obj, timeout=LLM_TIMEOUT_SECONDS) as response:  # noqa: S310
+            return json.loads(response.read().decode("utf-8"))
+    except error.HTTPError as exc:
+        details = exc.read().decode("utf-8", errors="ignore")
+        raise RuntimeError(f"{config['label']} API error {exc.code}: {details}") from exc
+    except error.URLError as exc:
+        raise RuntimeError(f"{config['label']} API connection failed: {exc.reason}") from exc
 
 
 def _extract_message_text(response_payload: dict) -> str:

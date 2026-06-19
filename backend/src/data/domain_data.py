@@ -55,6 +55,12 @@ SYMPTOMS = [
         "specialty": "general_medicine",
     },
     {
+        "id": "abdominal_pain",
+        "labels": {"en": "Stomach pain", "hi": "पेट दर्द", "bn": "পেট ব্যথা", "mr": "पोटदुखी", "ta": "வயிற்று வலி"},
+        "keywords": ["stomach pain", "abdominal pain", "belly pain", "stomach ache", "abdomen pain", "पेट दर्द", "পেট ব্যথা", "পেটে ব্যথা", "पोटदुखी", "வயிற்று வலி"],
+        "specialty": "general_medicine",
+    },
+    {
         "id": "vomiting",
         "labels": {"en": "Vomiting", "hi": "उल्टी", "bn": "বমি", "mr": "उलटी", "ta": "வாந்தி"},
         "keywords": ["vomit", "vomiting", "उल्टी", "বমি", "उलटी", "வாந்தி"],

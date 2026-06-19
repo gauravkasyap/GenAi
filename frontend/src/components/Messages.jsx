@@ -1,5 +1,7 @@
 import React from "react";
 
+import { ASSISTANT_REPLY_TITLE } from "../utils/language";
+
 const DEFAULT_MESSAGES = {
   you: "You",
   specialty: "Specialty",
@@ -38,6 +40,14 @@ const DEFAULT_MESSAGES = {
   sendingFollowUp: "Sending...",
   disclaimerLabel: "Disclaimer",
   noHospitals: "Nearby hospital suggestions are not available right now.",
+  nearbyHospitals: "Nearby hospital suggestions",
+  enableLocation: "Enable location",
+  locationPrompt:
+    "Turn on your location to find hospitals near your current area.",
+  locationEnabled: "Location enabled",
+  locationDenied:
+    "Location permission was not granted. You can still use the suggested care options.",
+  openNearbyHospitals: "Open hospitals near me",
 };
 
 function resolveMessages(ui) {
@@ -243,105 +253,140 @@ export function TextMessage({ role, title, text, ui }) {
 export function AnalysisMessage({
   message,
   ui,
-  onFollowUpSubmit,
-  followUpBusy = false,
 }) {
   const copy = resolveMessages(ui);
   const data = message.payload;
-  const [followUpText, setFollowUpText] = React.useState("");
+  const [locationState, setLocationState] = React.useState({
+    status: "idle",
+    latitude: null,
+    longitude: null,
+    error: "",
+  });
   const commonSymptoms = data.display.commonSymptoms ?? [];
+  const hospitals = data.recommendedHospitals ?? [];
+  const locationLabel = data.locationContext?.label;
+  const mapsUrl =
+    locationState.latitude && locationState.longitude
+      ? `https://www.google.com/maps/search/hospital/@${locationState.latitude},${locationState.longitude},14z`
+      : "https://www.google.com/maps/search/hospital+near+me";
+  const aiDoctorText = [
+    data.display.possibleCondition,
+    data.display.illnessExplanation || data.display.explanation,
+    commonSymptoms.length ? `${copy.commonSymptoms}: ${commonSymptoms.join(", ")}.` : null,
+    data.display.whenToSeekHelp,
+  ]
+    .filter(Boolean)
+    .join("\n\n");
 
-  async function handleFollowUpSubmit(event) {
-    event.preventDefault();
-    const trimmed = followUpText.trim();
-    if (!trimmed || !onFollowUpSubmit || followUpBusy) return;
-    const didSubmit = await onFollowUpSubmit(message, trimmed);
-    if (didSubmit !== false) {
-      setFollowUpText("");
+  function requestLocation() {
+    if (!navigator.geolocation) {
+      setLocationState({
+        status: "error",
+        latitude: null,
+        longitude: null,
+        error: "Location is not supported by this browser.",
+      });
+      return;
     }
+
+    setLocationState((current) => ({ ...current, status: "loading", error: "" }));
+
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        setLocationState({
+          status: "ready",
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude,
+          error: "",
+        });
+      },
+      () => {
+        setLocationState({
+          status: "error",
+          latitude: null,
+          longitude: null,
+          error: copy.locationDenied,
+        });
+      },
+      {
+        enableHighAccuracy: true,
+        timeout: 10000,
+        maximumAge: 300000,
+      },
+    );
   }
 
   return (
     <div className="flex gap-4">
       <Avatar label="GA" />
       <div className="max-w-3xl flex-1 rounded-[1.75rem] border border-white/10 bg-[#111111]/90 p-5 shadow-[0_24px_60px_rgba(0,0,0,0.24)] backdrop-blur-xl">
-        <div className="grid gap-4">
-          <section className="rounded-[1.5rem] border border-blue-400/18 bg-blue-500/10 p-4 backdrop-blur-xl">
-            <SectionHeading
-              icon={<ConditionIcon />}
-              title={copy.possibleCondition}
-              tone="blue"
-            />
-            <p className="mt-4 text-sm leading-7 text-white/75">
-              {data.display.possibleCondition}
-            </p>
-          </section>
+        <h3 className="text-sm font-semibold text-white">{ASSISTANT_REPLY_TITLE}</h3>
+        <p className="mt-3 whitespace-pre-wrap text-sm leading-7 text-white/72">
+          {aiDoctorText}
+        </p>
 
-          <section className="rounded-[1.5rem] border border-white/8 bg-white/[0.04] p-4 backdrop-blur-xl">
-            <SectionHeading
-              icon={<ExplanationIcon />}
-              title={copy.explanation}
-              tone="sky"
-            />
-            <p className="mt-4 text-sm leading-7 text-white/70">
-              {data.display.illnessExplanation || data.display.explanation}
-            </p>
-          </section>
+        <section className="mt-4 rounded-[1.4rem] border border-white/8 bg-white/[0.04] p-4">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <h4 className="text-sm font-semibold text-white">
+              {copy.nearbyHospitals}
+            </h4>
+            {locationLabel ? (
+              <span className="rounded-full border border-white/10 bg-black/20 px-3 py-1 text-xs text-white/50">
+                {locationLabel}
+              </span>
+            ) : null}
+          </div>
 
-          <section className="rounded-[1.5rem] border border-white/8 bg-white/[0.04] p-4 backdrop-blur-xl">
-            <SectionHeading
-              icon={<SymptomsIcon />}
-              title={copy.commonSymptoms}
-              tone="emerald"
-            />
-            <ul className="mt-4 space-y-2 text-sm leading-6 text-white/68">
-              {commonSymptoms.map((item, index) => (
-                <li key={`${item}-${index}`} className="ml-4 list-disc pl-1">
-                  {item}
-                </li>
+          <div className="mt-3 rounded-[1.2rem] border border-blue-300/15 bg-blue-500/10 p-3">
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <p className="text-sm leading-6 text-blue-50/80">
+                {locationState.status === "ready"
+                  ? copy.locationEnabled
+                  : copy.locationPrompt}
+              </p>
+
+              {locationState.status === "ready" ? (
+                <a
+                  href={mapsUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="rounded-full border border-blue-300/25 bg-blue-500/15 px-3 py-1.5 text-xs font-medium text-blue-100 transition hover:bg-blue-500/25"
+                >
+                  {copy.openNearbyHospitals}
+                </a>
+              ) : (
+                <button
+                  type="button"
+                  onClick={requestLocation}
+                  disabled={locationState.status === "loading"}
+                  className="rounded-full border border-blue-300/25 bg-blue-500/15 px-3 py-1.5 text-xs font-medium text-blue-100 transition hover:bg-blue-500/25 disabled:opacity-60"
+                >
+                  {locationState.status === "loading"
+                    ? "Locating..."
+                    : copy.enableLocation}
+                </button>
+              )}
+            </div>
+
+            {locationState.error ? (
+              <p className="mt-2 text-xs leading-5 text-amber-100">
+                {locationState.error}
+              </p>
+            ) : null}
+          </div>
+
+          {hospitals.length ? (
+            <div className="mt-3 grid gap-3 md:grid-cols-2">
+              {hospitals.map((hospital) => (
+                <FacilityCard key={hospital.id} hospital={hospital} />
               ))}
-            </ul>
-          </section>
-
-          <section className="rounded-[1.5rem] border border-amber-400/15 bg-amber-500/10 p-4 backdrop-blur-xl">
-            <SectionHeading
-              icon={<WarningIcon />}
-              title={copy.whenToSeekHelp}
-              tone="amber"
-            />
-            <p className="mt-4 text-sm leading-7 text-amber-100">
-              {data.display.whenToSeekHelp}
+            </div>
+          ) : (
+            <p className="mt-3 text-sm leading-6 text-white/45">
+              {copy.noHospitals}
             </p>
-          </section>
-
-          <section className="rounded-[1.5rem] border border-white/8 bg-white/[0.04] p-4 backdrop-blur-xl">
-            <SectionHeading
-              icon={<FollowUpIcon />}
-              title={copy.followUp}
-              subtitle={data.display.followUpQuestion}
-              tone="sky"
-            />
-            <form
-              onSubmit={handleFollowUpSubmit}
-              className="mt-4 grid gap-3 md:grid-cols-[minmax(0,1fr)_auto]"
-            >
-              <textarea
-                value={followUpText}
-                onChange={(event) => setFollowUpText(event.target.value)}
-                rows={2}
-                placeholder={copy.followUpPlaceholder}
-                className="min-h-[88px] w-full rounded-[1.3rem] border border-white/10 bg-black/20 px-4 py-3 text-sm text-white outline-none placeholder:text-white/25"
-              />
-              <button
-                type="submit"
-                disabled={followUpBusy || !followUpText.trim()}
-                className="rounded-[1.3rem] bg-gradient-to-r from-[#2563eb] via-[#3b82f6] to-[#60a5fa] px-5 py-3 text-sm font-semibold text-white shadow-[0_18px_50px_rgba(37,99,235,0.28)] transition hover:brightness-110 disabled:opacity-60"
-              >
-                {followUpBusy ? copy.sendingFollowUp : copy.sendFollowUp}
-              </button>
-            </form>
-          </section>
-        </div>
+          )}
+        </section>
 
         <div className="mt-4 rounded-[1.3rem] border border-amber-400/15 bg-amber-500/10 px-4 py-3 text-sm leading-6 text-amber-100">
           <span className="font-semibold text-amber-50">{copy.disclaimerLabel}: </span>
@@ -356,7 +401,7 @@ export function PrescriptionMessage({ message, ui }) {
   const copy = resolveMessages(ui);
   return (
     <div className="flex gap-4">
-      <Avatar label="GA" />
+      <Avatar label="Dr." />
       <div className="max-w-3xl flex-1 rounded-[1.75rem] border border-white/10 bg-[#111111]/90 p-5 shadow-[0_24px_60px_rgba(0,0,0,0.24)] backdrop-blur-xl">
         <h3 className="text-xl font-semibold text-white">{copy.prescriptionExplainer}</h3>
         <div className="mt-4 grid gap-3">
@@ -407,7 +452,7 @@ export function FinderMessage({ message, ui }) {
   const copy = resolveMessages(ui);
   return (
     <div className="flex gap-4">
-      <Avatar label="GA" />
+      <Avatar label="Dr." />
       <div className="max-w-3xl flex-1 rounded-[1.75rem] border border-white/10 bg-[#111111]/90 p-5 shadow-[0_24px_60px_rgba(0,0,0,0.24)] backdrop-blur-xl">
         <h3 className="text-xl font-semibold text-white">{copy.facilityFinder}</h3>
         <div className="mt-4 grid gap-3 md:grid-cols-2">

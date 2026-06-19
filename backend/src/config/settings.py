@@ -34,6 +34,16 @@ HOST = os.environ.get("HOST", "127.0.0.1")
 PORT = int(os.environ.get("PORT", "8000"))
 APP_DEBUG = os.environ.get("APP_DEBUG", "false").strip().lower() in {"1", "true", "yes", "on"}
 SERVER_NAME = os.environ.get("SERVER_NAME", "GenAi/0.2")
+CORS_ALLOWED_ORIGINS = {
+    origin.strip()
+    for origin in os.environ.get(
+        "CORS_ALLOWED_ORIGINS",
+        "http://localhost:5173,http://127.0.0.1:5173,http://localhost:5174,http://127.0.0.1:5174",
+    ).split(",")
+    if origin.strip()
+}
+MONGODB_URI = os.environ.get("MONGODB_URI", "").strip()
+DATABASE_NAME = os.environ.get("DATABASE_NAME", "genai_db").strip()
 
 LLM_PROVIDER = os.environ.get("LLM_PROVIDER", "auto").strip().lower()
 OPENAI_API_KEY = (os.environ.get("OPENAI_API_KEY") or os.environ.get("OPEN_API_KEY") or "").strip()

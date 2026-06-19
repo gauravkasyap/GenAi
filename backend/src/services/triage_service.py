@@ -210,7 +210,7 @@ def cluster_for(symptoms: set[str], persona: str) -> str:
         return "respiratory_distress"
     if persona == "pregnancy" and {"pregnancy_pain", "severe_bleeding"} & symptoms:
         return "pregnancy_warning"
-    if {"diarrhea", "vomiting", "dehydration"} & symptoms:
+    if {"diarrhea", "vomiting", "dehydration", "abdominal_pain"} & symptoms:
         return "possible_dehydration"
     if {"injury", "headache"} & symptoms:
         return "injury_or_pain"
@@ -252,7 +252,7 @@ def severity_level(symptoms: set[str], persona: str, duration: str, intensity: s
         return "urgent"
     if symptoms & {"high_sugar", "rash", "headache", "dizziness"}:
         return "soon"
-    if symptoms & {"fever", "cough", "vomiting", "diarrhea"}:
+    if symptoms & {"fever", "cough", "vomiting", "diarrhea", "abdominal_pain"}:
         return "soon"
     return "self_care"
 
@@ -262,7 +262,7 @@ def action_codes_for(level: str, symptoms: set[str]) -> list[str]:
         return ["call_108_or_112", "go_now", "do_not_delay", "carry_records"]
     if level == "urgent":
         actions = ["visit_today", "carry_records", "avoid_self_medicating", "ask_asha_for_help"]
-        if {"diarrhea", "vomiting", "dehydration"} & symptoms:
+        if {"diarrhea", "vomiting", "dehydration", "abdominal_pain"} & symptoms:
             actions.insert(1, "fluids_if_alert")
         return actions
     if level == "soon":
@@ -272,7 +272,7 @@ def action_codes_for(level: str, symptoms: set[str]) -> list[str]:
 
 def care_codes_for(symptoms: set[str]) -> list[str]:
     care = ["hydration", "rest", "medicine_check"]
-    if {"diarrhea", "vomiting"} & symptoms:
+    if {"diarrhea", "vomiting", "abdominal_pain"} & symptoms:
         care.append("ors")
     if {"fever", "cough"} & symptoms:
         care.append("isolate_mask")
@@ -405,9 +405,9 @@ def condition_profile_key_for(symptoms: set[str], persona: str, notes: str) -> s
         token in lowered for token in ["rash", "itch", "allergy", "eczema", "skin"]
     ):
         return "skin_issue"
-    if {"diarrhea", "vomiting", "dehydration"} & symptoms or any(
+    if {"diarrhea", "vomiting", "dehydration", "abdominal_pain"} & symptoms or any(
         token in lowered
-        for token in ["diarrhea", "diarrhoea", "loose motion", "vomit", "food poisoning", "stomach bug"]
+        for token in ["diarrhea", "diarrhoea", "loose motion", "vomit", "food poisoning", "stomach bug", "stomach pain", "abdominal pain", "belly pain", "stomach ache"]
     ):
         return "stomach_or_dehydration"
     if "high_sugar" in symptoms or any(
@@ -463,7 +463,7 @@ def follow_up_question_for(symptoms: set[str], persona: str, cluster: str, copy:
         question_code = "rash"
     elif persona == "pregnancy" or "pregnancy_pain" in symptoms:
         question_code = "pregnancy"
-    elif {"diarrhea", "vomiting", "dehydration"} & symptoms:
+    elif {"diarrhea", "vomiting", "dehydration", "abdominal_pain"} & symptoms:
         question_code = "dehydration"
     elif "high_sugar" in symptoms:
         question_code = "sugar"

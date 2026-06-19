@@ -10,6 +10,7 @@ from src.controllers.books_controller import (
     post_upload_book,
 )
 from src.controllers.bootstrap_controller import get_bootstrap, get_health
+from src.controllers.chat_controller import post_chat
 from src.controllers.prescription_controller import post_explain_prescription
 from src.controllers.triage_controller import get_hospitals, post_analyze
 
@@ -21,6 +22,7 @@ GET_ROUTES = {
 }
 
 POST_ROUTES = {
+    "/api/chat": post_chat,
     "/api/analyze": post_analyze,
     "/api/prescription/explain": post_explain_prescription,
     "/api/books/upload": post_upload_book,

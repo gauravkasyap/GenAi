@@ -21,10 +21,9 @@ export function MedicalBookSidebar({
   confirmingBookId,
 }) {
   return (
-    <section className="mt-6 rounded-[1.5rem] border border-white/10 bg-white/[0.04] p-3 shadow-[0_18px_50px_rgba(0,0,0,0.2)] backdrop-blur-xl">
-      <div className="flex items-center justify-between gap-3">
+    <section className="mt-4 flex min-h-[10px] flex-03 flex-col overflow-hidden rounded-[1.25rem] border border-white/10 bg-white/[0.04] p-3 shadow-[0_18px_50px_rgba(0,0,0,0.18)] backdrop-blur-xl">
+      <div className="flex shrink-0 items-center justify-between gap-1">
         <div>
-          <p className="text-xs uppercase tracking-[0.22em] text-white/40">{copy.sectionEyebrow}</p>
           <h3 className="mt-1 text-sm font-semibold text-white">{copy.sectionTitle}</h3>
         </div>
         <button
@@ -36,12 +35,12 @@ export function MedicalBookSidebar({
         </button>
       </div>
 
-      {!books.length ? (
-        <div className="mt-4 rounded-2xl border border-dashed border-white/10 bg-black/20 px-3 py-4 text-sm leading-6 text-white/45">
+      {/* {!books.length ? (
+        <div className="mt-4 min-h-0 overflow-y-auto rounded-2xl border border-dashed border-white/10 bg-black/20 px-3 py-4 text-sm leading-6 text-white/45">
           {copy.emptyState}
         </div>
       ) : (
-        <div className="mt-4 space-y-2">
+        <div className="mt-4 min-h-0 flex-1 space-y-2 overflow-y-auto pr-1">
           {books.map((book) => {
             const isSelected = book.id === selectedBookId;
             const isActiveMode = isSelected && composerMode === "book";
@@ -54,17 +53,16 @@ export function MedicalBookSidebar({
               >
                 <button type="button" onClick={() => onSelectBook(book.id)} className="w-full text-left">
                   <div className="flex items-start justify-between gap-3">
-                    <div className="min-w-0">
-                      <div className="truncate text-sm font-medium text-white">{book.name}</div>
-                      <div className="mt-1 truncate text-xs text-white/45">{book.sourceLabel}</div>
-                    </div>
-                    <span className={`shrink-0 rounded-full border px-2.5 py-1 text-[10px] font-medium uppercase tracking-[0.16em] ${statusClasses(book.sourceStatus)}`}>
+                      <div className="min-w-0 flex-1">
+                        <div className="truncate text-sm font-medium text-white">{book.name}</div>
+                        <div className="mt-1 truncate text-xs text-white/45">{book.sourceLabel}</div>
+                      </div>
+                    <span className={`shrink-0 rounded-full border px-2 py-1 text-[9px] font-medium uppercase tracking-[0.12em] ${statusClasses(book.sourceStatus)}`}>
                       {book.sourceStatus === "verified" ? copy.verifiedBadge : copy.cautionBadge}
                     </span>
                   </div>
 
                   {book.preview ? <p className="mt-2 line-clamp-2 text-xs leading-5 text-white/50">{book.preview}</p> : null}
-                  {book.sourceReason ? <p className="mt-2 text-xs leading-5 text-white/40">{book.sourceReason}</p> : null}
                 </button>
 
                 <div className="mt-3 flex flex-wrap gap-2">
@@ -102,7 +100,7 @@ export function MedicalBookSidebar({
             );
           })}
         </div>
-      )}
+      )} */}
     </section>
   );
 }

@@ -1,0 +1,245 @@
+%PDF-1.4
+%‚„œ”
+1 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+2 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+3 0 obj
+<< /Type /Pages /Count 2 /Kids [6 0 R 7 0 R] >>
+endobj
+4 0 obj
+<< /Length 8362 >>
+stream
+q 1.00 w  0.973 0.980 0.988 rg 0.00 0.00 595.28 841.89 re f Q
+BT /F2 24.00 Tf 0.059 0.090 0.165 rg 1 0 0 1 40.00 781.89 Tm (GenAi Agent Architecture) Tj ET
+BT /F1 11.50 Tf 0.278 0.333 0.412 rg 1 0 0 1 40.00 764.39 Tm (A 1-2 page system view of agent roles, communication, tool integrations, and failure handling) Tj ET
+BT /F1 11.50 Tf 0.059 0.090 0.165 rg 1 0 0 1 40.00 735.39 Tm (GenAi behaves like a focused multi-agent healthcare assistant behind one chat) Tj ET
+BT /F1 11.50 Tf 0.059 0.090 0.165 rg 1 0 0 1 40.00 720.39 Tm (interface. The frontend orchestrates requests, the backend routes them to specialist) Tj ET
+BT /F1 11.50 Tf 0.059 0.090 0.165 rg 1 0 0 1 40.00 705.39 Tm (agents, and each agent can call local tools or external providers while degrading) Tj ET
+BT /F1 11.50 Tf 0.059 0.090 0.165 rg 1 0 0 1 40.00 690.39 Tm (safely when a dependency fails.) Tj ET
+q 1.00 w 0.145 0.388 0.922 RG 0.145 0.388 0.922 rg 40.00 642.87 515.28 28.00 re B Q
+BT /F2 11.00 Tf 1.000 1.000 1.000 rg 1 0 0 1 54.00 651.87 Tm (System view: orchestration, specialist agents, tools, and fallback paths) Tj ET
+q 1.00 w 0.059 0.090 0.165 RG 78.70 615.87 m 224.40 560.62 l S Q
+q 1.00 w 0.059 0.090 0.165 RG 216.61 559.83 m 224.40 560.62 l S Q
+q 1.00 w 0.059 0.090 0.165 RG 219.10 566.38 m 224.40 560.62 l S Q
+q 1.00 w 0.059 0.090 0.165 RG 301.90 591.04 m 329.80 591.04 l S Q
+q 1.00 w 0.059 0.090 0.165 RG 322.80 587.54 m 329.80 591.04 l S Q
+q 1.00 w 0.059 0.090 0.165 RG 322.80 594.54 m 329.80 591.04 l S Q
+q 1.00 w 0.059 0.090 0.165 RG 401.10 560.62 m 106.60 507.37 l S Q
+q 1.00 w 0.059 0.090 0.165 RG 112.87 512.05 m 106.60 507.37 l S Q
+q 1.00 w 0.059 0.090 0.165 RG 114.11 505.17 m 106.60 507.37 l S Q
+q 1.00 w 0.059 0.090 0.165 RG 401.10 560.62 m 246.10 507.37 l S Q
+q 1.00 w 0.059 0.090 0.165 RG 251.58 512.95 m 246.10 507.37 l S Q
+q 1.00 w 0.059 0.090 0.165 RG 253.86 506.33 m 246.10 507.37 l S Q
+q 1.00 w 0.059 0.090 0.165 RG 401.10 560.62 m 401.10 507.37 l S Q
+q 1.00 w 0.059 0.090 0.165 RG 397.60 514.37 m 401.10 507.37 l S Q
+q 1.00 w 0.059 0.090 0.165 RG 404.60 514.37 m 401.10 507.37 l S Q
+q 1.00 w 0.059 0.090 0.165 RG 401.10 560.62 m 261.60 433.87 l S Q
+q 1.00 w 0.059 0.090 0.165 RG 264.43 441.16 m 261.60 433.87 l S Q
+q 1.00 w 0.059 0.090 0.165 RG 269.13 435.98 m 261.60 433.87 l S Q
+q 1.00 w 0.059 0.090 0.165 RG 106.60 446.52 m 94.20 328.87 l S Q
+q 1.00 w 0.059 0.090 0.165 RG 91.45 336.19 m 94.20 328.87 l S Q
+q 1.00 w 0.059 0.090 0.165 RG 98.41 335.46 m 94.20 328.87 l S Q
+q 1.00 w 0.059 0.090 0.165 RG 106.60 446.52 m 252.30 328.87 l S Q
+q 1.00 w 0.059 0.090 0.165 RG 244.66 330.54 m 252.30 328.87 l S Q
+q 1.00 w 0.059 0.090 0.165 RG 249.05 335.99 m 252.30 328.87 l S Q
+q 1.00 w 0.059 0.090 0.165 RG 246.10 446.52 m 252.30 328.87 l S Q
+q 1.00 w 0.059 0.090 0.165 RG 248.44 335.67 m 252.30 328.87 l S Q
+q 1.00 w 0.059 0.090 0.165 RG 255.43 336.04 m 252.30 328.87 l S Q
+q 1.00 w 0.059 0.090 0.165 RG 401.10 446.52 m 252.30 328.87 l S Q
+q 1.00 w 0.059 0.090 0.165 RG 255.62 335.95 m 252.30 328.87 l S Q
+q 1.00 w 0.059 0.090 0.165 RG 259.96 330.46 m 252.30 328.87 l S Q
+q 1.00 w 0.059 0.090 0.165 RG 261.60 373.02 m 416.60 328.87 l S Q
+q 1.00 w 0.059 0.090 0.165 RG 408.91 327.42 m 416.60 328.87 l S Q
+q 1.00 w 0.059 0.090 0.165 RG 410.83 334.15 m 416.60 328.87 l S Q
+q 1.00 w 0.059 0.090 0.165 RG 106.60 446.52 m 258.50 237.87 l S Q
+q 1.00 w 0.059 0.090 0.165 RG 251.55 241.46 m 258.50 237.87 l S Q
+q 1.00 w 0.059 0.090 0.165 RG 257.21 245.58 m 258.50 237.87 l S Q
+q 1.00 w 0.059 0.090 0.165 RG 261.60 373.02 m 258.50 237.87 l S Q
+q 1.00 w 0.059 0.090 0.165 RG 255.16 244.94 m 258.50 237.87 l S Q
+q 1.00 w 0.059 0.090 0.165 RG 262.16 244.78 m 258.50 237.87 l S Q
+q 1.00 w 0.059 0.090 0.165 RG 401.10 560.62 m 258.50 237.87 l S Q
+q 1.00 w 0.059 0.090 0.165 RG 258.13 245.68 m 258.50 237.87 l S Q
+q 1.00 w 0.059 0.090 0.165 RG 264.53 242.85 m 258.50 237.87 l S Q
+q 1.20 w 0.145 0.388 0.922 RG 0.859 0.918 0.996 rg 38.40 567.50 80.60 48.36 re B Q
+BT /F2 11.50 Tf 0.059 0.090 0.165 rg 1 0 0 1 48.40 590.37 Tm (User) Tj ET
+BT /F1 9.20 Tf 0.059 0.090 0.165 rg 1 0 0 1 48.40 572.66 Tm (Voice or) Tj ET
+BT /F1 9.20 Tf 0.059 0.090 0.165 rg 1 0 0 1 48.40 560.66 Tm (text input) Tj ET
+q 1.20 w 0.220 0.741 0.973 RG 0.059 0.090 0.165 rg 146.90 560.62 155.00 60.84 re B Q
+BT /F2 11.50 Tf 0.973 0.980 0.988 rg 1 0 0 1 156.90 595.96 Tm (Frontend Orchestrator) Tj ET
+BT /F1 9.20 Tf 0.973 0.980 0.988 rg 1 0 0 1 156.90 578.26 Tm (WorkspacePage + Messages +) Tj ET
+BT /F1 9.20 Tf 0.973 0.980 0.988 rg 1 0 0 1 156.90 566.26 Tm (api.js) Tj ET
+q 1.20 w 0.145 0.388 0.922 RG 0.937 0.965 1.000 rg 329.80 560.62 142.60 60.84 re B Q
+BT /F2 11.50 Tf 0.059 0.090 0.165 rg 1 0 0 1 339.80 595.96 Tm (Backend HTTP Shell) Tj ET
+BT /F1 9.20 Tf 0.059 0.090 0.165 rg 1 0 0 1 339.80 578.26 Tm (AppHandler + api_router) Tj ET
+q 1.20 w 0.145 0.388 0.922 RG 0.937 0.965 1.000 rg 44.60 446.52 124.00 60.84 re B Q
+BT /F2 11.50 Tf 0.059 0.090 0.165 rg 1 0 0 1 54.60 481.87 Tm (Symptom Analysis Agent) Tj ET
+BT /F1 9.20 Tf 0.059 0.090 0.165 rg 1 0 0 1 54.60 464.17 Tm (triage_controller ->) Tj ET
+BT /F1 9.20 Tf 0.059 0.090 0.165 rg 1 0 0 1 54.60 452.17 Tm (triage_service) Tj ET
+q 1.20 w 0.145 0.388 0.922 RG 0.937 0.965 1.000 rg 184.10 446.52 124.00 60.84 re B Q
+BT /F2 11.50 Tf 0.059 0.090 0.165 rg 1 0 0 1 194.10 481.87 Tm (Facility Finder Agent) Tj ET
+BT /F1 9.20 Tf 0.059 0.090 0.165 rg 1 0 0 1 194.10 464.17 Tm (hospital_search +) Tj ET
+BT /F1 9.20 Tf 0.059 0.090 0.165 rg 1 0 0 1 194.10 452.17 Tm (hospital ranking) Tj ET
+q 1.20 w 0.145 0.388 0.922 RG 0.937 0.965 1.000 rg 323.60 446.52 155.00 60.84 re B Q
+BT /F2 11.50 Tf 0.059 0.090 0.165 rg 1 0 0 1 333.60 481.87 Tm (Prescription Explainer Agent) Tj ET
+BT /F1 9.20 Tf 0.059 0.090 0.165 rg 1 0 0 1 333.60 464.17 Tm (prescription_controller ->) Tj ET
+BT /F1 9.20 Tf 0.059 0.090 0.165 rg 1 0 0 1 333.60 452.17 Tm (prescription_service) Tj ET
+q 1.20 w 0.145 0.388 0.922 RG 0.937 0.965 1.000 rg 184.10 373.02 155.00 60.84 re B Q
+BT /F2 11.50 Tf 0.059 0.090 0.165 rg 1 0 0 1 194.10 408.37 Tm (Medical Book Agent) Tj ET
+BT /F1 9.20 Tf 0.059 0.090 0.165 rg 1 0 0 1 194.10 390.67 Tm (books_controller ->) Tj ET
+BT /F1 9.20 Tf 0.059 0.090 0.165 rg 1 0 0 1 194.10 378.67 Tm (book_service) Tj ET
+q 1.20 w 0.086 0.639 0.290 RG 0.863 0.988 0.906 rg 26.00 272.70 136.40 56.16 re B Q
+BT /F2 11.50 Tf 0.059 0.090 0.165 rg 1 0 0 1 36.00 303.37 Tm (LLM Tool) Tj ET
+BT /F1 9.20 Tf 0.059 0.090 0.165 rg 1 0 0 1 36.00 285.67 Tm (OpenAI or Groq via) Tj ET
+BT /F1 9.20 Tf 0.059 0.090 0.165 rg 1 0 0 1 36.00 273.67 Tm (llm_triage_service) Tj ET
+q 1.20 w 0.008 0.518 0.780 RG 0.878 0.949 0.996 rg 174.80 272.70 155.00 56.16 re B Q
+BT /F2 11.50 Tf 0.059 0.090 0.165 rg 1 0 0 1 184.80 303.37 Tm (Static Knowledge Tools) Tj ET
+BT /F1 9.20 Tf 0.059 0.090 0.165 rg 1 0 0 1 184.80 285.67 Tm (domain_data +) Tj ET
+BT /F1 9.20 Tf 0.059 0.090 0.165 rg 1 0 0 1 184.80 273.67 Tm (localization_service) Tj ET
+q 1.20 w 0.851 0.467 0.024 RG 0.996 0.953 0.780 rg 342.20 272.70 148.80 56.16 re B Q
+BT /F2 11.50 Tf 0.059 0.090 0.165 rg 1 0 0 1 352.20 303.37 Tm (File + Session Tools) Tj ET
+BT /F1 9.20 Tf 0.059 0.090 0.165 rg 1 0 0 1 352.20 285.67 Tm (PDF or DOCX parsing +) Tj ET
+BT /F1 9.20 Tf 0.059 0.090 0.165 rg 1 0 0 1 352.20 273.67 Tm (localStorage + in-memory) Tj ET
+BT /F1 9.20 Tf 0.059 0.090 0.165 rg 1 0 0 1 352.20 261.67 Tm (books) Tj ET
+q 1.20 w 0.863 0.149 0.149 RG 0.996 0.886 0.886 rg 128.30 180.15 260.40 57.72 re B Q
+BT /F2 11.50 Tf 0.059 0.090 0.165 rg 1 0 0 1 138.30 212.37 Tm (Fallback and Error Layer) Tj ET
+BT /F1 9.20 Tf 0.059 0.090 0.165 rg 1 0 0 1 138.30 194.67 Tm (400 or 404 handling + rule-based fallback + safe) Tj ET
+BT /F1 9.20 Tf 0.059 0.090 0.165 rg 1 0 0 1 138.30 182.67 Tm (defaults) Tj ET
+q 1.00 w 0.796 0.835 0.882 RG 1.000 1.000 1.000 rg 40.00 36.87 515.28 74.00 re B Q
+BT /F2 11.50 Tf 0.059 0.090 0.165 rg 1 0 0 1 54.00 87.37 Tm (What this diagram shows) Tj ET
+BT /F1 10.50 Tf 0.059 0.090 0.165 rg 1 0 0 1 54.00 68.37 Tm (The frontend orchestrator is the single user-facing hub. Each backend capability acts) Tj ET
+BT /F1 10.50 Tf 0.059 0.090 0.165 rg 1 0 0 1 54.00 55.37 Tm (like a specialist agent. External providers such as OpenAI or Groq are optional tools) Tj ET
+BT /F1 10.50 Tf 0.059 0.090 0.165 rg 1 0 0 1 54.00 42.37 Tm (rather than mandatory dependencies.) Tj ET
+BT /F2 10.00 Tf 0.278 0.333 0.412 rg 1 0 0 1 525.28 26.00 Tm (1) Tj ET
+endstream
+endobj
+5 0 obj
+<< /Length 9292 >>
+stream
+q 1.00 w  0.973 0.980 0.988 rg 0.00 0.00 595.28 841.89 re f Q
+BT /F2 22.00 Tf 0.059 0.090 0.165 rg 1 0 0 1 40.00 783.89 Tm (Role, Tool, and Failure Notes) Tj ET
+BT /F1 11.50 Tf 0.278 0.333 0.412 rg 1 0 0 1 40.00 766.39 Tm (Condensed handoff summary for implementation, review, or presentation use) Tj ET
+q 1.00 w 0.796 0.835 0.882 RG 1.000 1.000 1.000 rg 40.00 445.89 249.64 300.00 re B Q
+q 1.00 w 0.145 0.388 0.922 RG 0.145 0.388 0.922 rg 40.00 715.89 249.64 30.00 re B Q
+BT /F2 11.50 Tf 1.000 1.000 1.000 rg 1 0 0 1 52.00 725.39 Tm (Agent roles) Tj ET
+BT /F2 10.10 Tf 0.059 0.090 0.165 rg 1 0 0 1 52.00 691.79 Tm (-) Tj ET
+BT /F1 10.10 Tf 0.059 0.090 0.165 rg 1 0 0 1 64.00 691.79 Tm (Frontend Conversation Orchestrator:) Tj ET
+BT /F1 10.10 Tf 0.059 0.090 0.165 rg 1 0 0 1 64.00 678.15 Tm (collects intent, routes requests, and) Tj ET
+BT /F1 10.10 Tf 0.059 0.090 0.165 rg 1 0 0 1 64.00 664.52 Tm (renders structured replies.) Tj ET
+BT /F2 10.10 Tf 0.059 0.090 0.165 rg 1 0 0 1 52.00 643.35 Tm (-) Tj ET
+BT /F1 10.10 Tf 0.059 0.090 0.165 rg 1 0 0 1 64.00 643.35 Tm (Symptom Analysis Agent: detects) Tj ET
+BT /F1 10.10 Tf 0.059 0.090 0.165 rg 1 0 0 1 64.00 629.72 Tm (symptoms, scores urgency, suggests) Tj ET
+BT /F1 10.10 Tf 0.059 0.090 0.165 rg 1 0 0 1 64.00 616.08 Tm (facilities, and can enrich explanations) Tj ET
+BT /F1 10.10 Tf 0.059 0.090 0.165 rg 1 0 0 1 64.00 602.45 Tm (with OpenAI or Groq.) Tj ET
+BT /F2 10.10 Tf 0.059 0.090 0.165 rg 1 0 0 1 52.00 581.27 Tm (-) Tj ET
+BT /F1 10.10 Tf 0.059 0.090 0.165 rg 1 0 0 1 64.00 581.27 Tm (Facility Finder Agent: ranks nearby) Tj ET
+BT /F1 10.10 Tf 0.059 0.090 0.165 rg 1 0 0 1 64.00 567.64 Tm (hospitals using district, state,) Tj ET
+BT /F1 10.10 Tf 0.059 0.090 0.165 rg 1 0 0 1 64.00 554.00 Tm (specialty, and urgency.) Tj ET
+BT /F2 10.10 Tf 0.059 0.090 0.165 rg 1 0 0 1 52.00 532.84 Tm (-) Tj ET
+BT /F1 10.10 Tf 0.059 0.090 0.165 rg 1 0 0 1 64.00 532.84 Tm (Prescription Explainer Agent: decodes) Tj ET
+BT /F1 10.10 Tf 0.059 0.090 0.165 rg 1 0 0 1 64.00 519.20 Tm (shorthand such as OD, BD, TDS, AC, and) Tj ET
+BT /F1 10.10 Tf 0.059 0.090 0.165 rg 1 0 0 1 64.00 505.57 Tm (PC into readable schedules.) Tj ET
+BT /F2 10.10 Tf 0.059 0.090 0.165 rg 1 0 0 1 52.00 484.40 Tm (-) Tj ET
+BT /F1 10.10 Tf 0.059 0.090 0.165 rg 1 0 0 1 64.00 484.40 Tm (Medical Book Agent: ingests uploaded) Tj ET
+BT /F1 10.10 Tf 0.059 0.090 0.165 rg 1 0 0 1 64.00 470.76 Tm (documents, checks source trust,) Tj ET
+BT /F1 10.10 Tf 0.059 0.090 0.165 rg 1 0 0 1 64.00 457.13 Tm (retrieves excerpts, and answers only) Tj ET
+BT /F1 10.10 Tf 0.059 0.090 0.165 rg 1 0 0 1 64.00 443.49 Tm (from the provided text.) Tj ET
+q 1.00 w 0.796 0.835 0.882 RG 1.000 1.000 1.000 rg 305.64 505.89 249.64 240.00 re B Q
+q 1.00 w 0.055 0.647 0.914 RG 0.055 0.647 0.914 rg 305.64 715.89 249.64 30.00 re B Q
+BT /F2 11.50 Tf 1.000 1.000 1.000 rg 1 0 0 1 317.64 725.39 Tm (Communication) Tj ET
+BT /F2 10.10 Tf 0.059 0.090 0.165 rg 1 0 0 1 317.64 691.79 Tm (-) Tj ET
+BT /F1 10.10 Tf 0.059 0.090 0.165 rg 1 0 0 1 329.64 691.79 Tm (1. User message enters the chat UI) Tj ET
+BT /F1 10.10 Tf 0.059 0.090 0.165 rg 1 0 0 1 329.64 678.15 Tm (through WorkspacePage and Messages.) Tj ET
+BT /F2 10.10 Tf 0.059 0.090 0.165 rg 1 0 0 1 317.64 656.99 Tm (-) Tj ET
+BT /F1 10.10 Tf 0.059 0.090 0.165 rg 1 0 0 1 329.64 656.99 Tm (2. frontend/src/services/api.js chooses) Tj ET
+BT /F1 10.10 Tf 0.059 0.090 0.165 rg 1 0 0 1 329.64 643.35 Tm (the matching backend endpoint.) Tj ET
+BT /F2 10.10 Tf 0.059 0.090 0.165 rg 1 0 0 1 317.64 622.18 Tm (-) Tj ET
+BT /F1 10.10 Tf 0.059 0.090 0.165 rg 1 0 0 1 329.64 622.18 Tm (3. AppHandler and api_router dispatch) Tj ET
+BT /F1 10.10 Tf 0.059 0.090 0.165 rg 1 0 0 1 329.64 608.54 Tm (the request to a focused controller.) Tj ET
+BT /F2 10.10 Tf 0.059 0.090 0.165 rg 1 0 0 1 317.64 587.38 Tm (-) Tj ET
+BT /F1 10.10 Tf 0.059 0.090 0.165 rg 1 0 0 1 329.64 587.38 Tm (4. The controller calls one service) Tj ET
+BT /F1 10.10 Tf 0.059 0.090 0.165 rg 1 0 0 1 329.64 573.74 Tm (module, which may use domain data, file) Tj ET
+BT /F1 10.10 Tf 0.059 0.090 0.165 rg 1 0 0 1 329.64 560.11 Tm (parsers, localization, or an external) Tj ET
+BT /F1 10.10 Tf 0.059 0.090 0.165 rg 1 0 0 1 329.64 546.47 Tm (LLM.) Tj ET
+BT /F2 10.10 Tf 0.059 0.090 0.165 rg 1 0 0 1 317.64 525.30 Tm (-) Tj ET
+BT /F1 10.10 Tf 0.059 0.090 0.165 rg 1 0 0 1 329.64 525.30 Tm (5. Structured JSON returns to the) Tj ET
+BT /F1 10.10 Tf 0.059 0.090 0.165 rg 1 0 0 1 329.64 511.67 Tm (frontend and is rendered as the next) Tj ET
+BT /F1 10.10 Tf 0.059 0.090 0.165 rg 1 0 0 1 329.64 498.03 Tm (assistant message.) Tj ET
+q 1.00 w 0.796 0.835 0.882 RG 1.000 1.000 1.000 rg 305.64 293.89 249.64 196.00 re B Q
+q 1.00 w 0.086 0.639 0.290 RG 0.086 0.639 0.290 rg 305.64 459.89 249.64 30.00 re B Q
+BT /F2 11.50 Tf 1.000 1.000 1.000 rg 1 0 0 1 317.64 469.39 Tm (Tool integrations) Tj ET
+BT /F2 10.10 Tf 0.059 0.090 0.165 rg 1 0 0 1 317.64 435.79 Tm (-) Tj ET
+BT /F1 10.10 Tf 0.059 0.090 0.165 rg 1 0 0 1 329.64 435.79 Tm (OpenAI or Groq chat completions for) Tj ET
+BT /F1 10.10 Tf 0.059 0.090 0.165 rg 1 0 0 1 329.64 422.15 Tm (optional symptom explanation) Tj ET
+BT /F1 10.10 Tf 0.059 0.090 0.165 rg 1 0 0 1 329.64 408.52 Tm (enhancement.) Tj ET
+BT /F2 10.10 Tf 0.059 0.090 0.165 rg 1 0 0 1 317.64 387.35 Tm (-) Tj ET
+BT /F1 10.10 Tf 0.059 0.090 0.165 rg 1 0 0 1 329.64 387.35 Tm (domain_data.py for symptoms, hospitals,) Tj ET
+BT /F1 10.10 Tf 0.059 0.090 0.165 rg 1 0 0 1 329.64 373.71 Tm (facilities, and public-health reference) Tj ET
+BT /F1 10.10 Tf 0.059 0.090 0.165 rg 1 0 0 1 329.64 360.08 Tm (topics.) Tj ET
+BT /F2 10.10 Tf 0.059 0.090 0.165 rg 1 0 0 1 317.64 338.91 Tm (-) Tj ET
+BT /F1 10.10 Tf 0.059 0.090 0.165 rg 1 0 0 1 329.64 338.91 Tm (localization_service.py for multilingual) Tj ET
+BT /F1 10.10 Tf 0.059 0.090 0.165 rg 1 0 0 1 329.64 325.27 Tm (labels and copy fallback.) Tj ET
+BT /F2 10.10 Tf 0.059 0.090 0.165 rg 1 0 0 1 317.64 304.11 Tm (-) Tj ET
+BT /F1 10.10 Tf 0.059 0.090 0.165 rg 1 0 0 1 329.64 304.11 Tm (PyMuPDF plus DOCX/XML and text parsers) Tj ET
+BT /F1 10.10 Tf 0.059 0.090 0.165 rg 1 0 0 1 329.64 290.47 Tm (for uploaded medical books.) Tj ET
+BT /F2 10.10 Tf 0.059 0.090 0.165 rg 1 0 0 1 317.64 269.30 Tm (-) Tj ET
+BT /F1 10.10 Tf 0.059 0.090 0.165 rg 1 0 0 1 329.64 269.30 Tm (localStorage for browser-side session) Tj ET
+BT /F1 10.10 Tf 0.059 0.090 0.165 rg 1 0 0 1 329.64 255.67 Tm (state and in-memory backend storage for) Tj ET
+BT /F1 10.10 Tf 0.059 0.090 0.165 rg 1 0 0 1 329.64 242.03 Tm (uploaded books.) Tj ET
+q 1.00 w 0.796 0.835 0.882 RG 1.000 1.000 1.000 rg 40.00 183.89 249.64 246.00 re B Q
+q 1.00 w 0.863 0.149 0.149 RG 0.863 0.149 0.149 rg 40.00 399.89 249.64 30.00 re B Q
+BT /F2 11.50 Tf 1.000 1.000 1.000 rg 1 0 0 1 52.00 409.39 Tm (Error handling) Tj ET
+BT /F2 10.10 Tf 0.059 0.090 0.165 rg 1 0 0 1 52.00 375.79 Tm (-) Tj ET
+BT /F1 10.10 Tf 0.059 0.090 0.165 rg 1 0 0 1 64.00 375.79 Tm (requestJson normalizes backend failures) Tj ET
+BT /F1 10.10 Tf 0.059 0.090 0.165 rg 1 0 0 1 64.00 362.15 Tm (into readable UI errors.) Tj ET
+BT /F2 10.10 Tf 0.059 0.090 0.165 rg 1 0 0 1 52.00 340.98 Tm (-) Tj ET
+BT /F1 10.10 Tf 0.059 0.090 0.165 rg 1 0 0 1 64.00 340.98 Tm (Invalid service input raises ValueError) Tj ET
+BT /F1 10.10 Tf 0.059 0.090 0.165 rg 1 0 0 1 64.00 327.35 Tm (and becomes a 400 JSON response.) Tj ET
+BT /F2 10.10 Tf 0.059 0.090 0.165 rg 1 0 0 1 52.00 306.18 Tm (-) Tj ET
+BT /F1 10.10 Tf 0.059 0.090 0.165 rg 1 0 0 1 64.00 306.18 Tm (Unknown routes return 404 and static) Tj ET
+BT /F1 10.10 Tf 0.059 0.090 0.165 rg 1 0 0 1 64.00 292.54 Tm (path traversal is blocked with 403.) Tj ET
+BT /F2 10.10 Tf 0.059 0.090 0.165 rg 1 0 0 1 52.00 271.38 Tm (-) Tj ET
+BT /F1 10.10 Tf 0.059 0.090 0.165 rg 1 0 0 1 64.00 271.38 Tm (If OpenAI or Groq is missing,) Tj ET
+BT /F1 10.10 Tf 0.059 0.090 0.165 rg 1 0 0 1 64.00 257.74 Tm (unavailable, or returns malformed) Tj ET
+BT /F1 10.10 Tf 0.059 0.090 0.165 rg 1 0 0 1 64.00 244.11 Tm (output, symptom analysis falls back to) Tj ET
+BT /F1 10.10 Tf 0.059 0.090 0.165 rg 1 0 0 1 64.00 230.47 Tm (the built-in rule-based engine.) Tj ET
+BT /F2 10.10 Tf 0.059 0.090 0.165 rg 1 0 0 1 52.00 209.30 Tm (-) Tj ET
+BT /F1 10.10 Tf 0.059 0.090 0.165 rg 1 0 0 1 64.00 209.30 Tm (If a medical-book answer is missing, the) Tj ET
+BT /F1 10.10 Tf 0.059 0.090 0.165 rg 1 0 0 1 64.00 195.67 Tm (app states that the information is not) Tj ET
+BT /F1 10.10 Tf 0.059 0.090 0.165 rg 1 0 0 1 64.00 182.03 Tm (available instead of hallucinating.) Tj ET
+q 1.00 w 0.796 0.835 0.882 RG 1.000 1.000 1.000 rg 40.00 61.89 515.28 90.00 re B Q
+BT /F2 11.50 Tf 0.059 0.090 0.165 rg 1 0 0 1 54.00 126.39 Tm (Design summary) Tj ET
+BT /F1 10.60 Tf 0.059 0.090 0.165 rg 1 0 0 1 54.00 105.29 Tm (GenAi is intentionally built around graceful degradation. If a premium tool fails, the) Tj ET
+BT /F1 10.60 Tf 0.059 0.090 0.165 rg 1 0 0 1 54.00 92.29 Tm (app still answers through built-in rules, local retrieval, and explicit safety) Tj ET
+BT /F1 10.60 Tf 0.059 0.090 0.165 rg 1 0 0 1 54.00 79.29 Tm (messaging. That keeps the user experience stable while allowing the architecture to grow) Tj ET
+BT /F1 10.60 Tf 0.059 0.090 0.165 rg 1 0 0 1 54.00 66.29 Tm (into a more capable agent platform over time.) Tj ET
+BT /F2 10.00 Tf 0.278 0.333 0.412 rg 1 0 0 1 525.28 26.00 Tm (2) Tj ET
+endstream
+endobj
+6 0 obj
+<< /Type /Page /Parent 3 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 1 0 R /F2 2 0 R >> >> /Contents 4 0 R >>
+endobj
+7 0 obj
+<< /Type /Page /Parent 3 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 1 0 R /F2 2 0 R >> >> /Contents 5 0 R >>
+endobj
+8 0 obj
+<< /Type /Catalog /Pages 3 0 R >>
+endobj
+xref
+0 9
+0000000000 65535 f 
+0000000015 00000 n 
+0000000085 00000 n 
+0000000160 00000 n 
+0000000223 00000 n 
+0000008637 00000 n 
+0000017981 00000 n 
+0000018123 00000 n 
+0000018265 00000 n 
+trailer
+<< /Size 9 /Root 8 0 R >>
+startxref
+18314
+%%EOF

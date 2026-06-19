@@ -174,3 +174,5 @@ export function MedicalBookPanel({
     </div>
   );
 }
+
+export default MedicalBookPanel;

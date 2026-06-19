@@ -5,6 +5,20 @@ import mimetypes
 from http import HTTPStatus
 from pathlib import Path
 
+from src.config.settings import CORS_ALLOWED_ORIGINS
+
+
+def send_cors_headers(handler) -> None:
+    origin = handler.headers.get("Origin")
+    if not origin or origin not in CORS_ALLOWED_ORIGINS:
+        return
+
+    handler.send_header("Access-Control-Allow-Origin", origin)
+    handler.send_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
+    handler.send_header("Access-Control-Allow-Headers", "Content-Type, Authorization")
+    handler.send_header("Access-Control-Max-Age", "86400")
+    handler.send_header("Vary", "Origin")
+
 
 def read_json(handler) -> dict:
     length = int(handler.headers.get("Content-Length", "0"))
@@ -18,6 +32,7 @@ def read_json(handler) -> dict:
 def send_json(handler, payload: dict, status: HTTPStatus = HTTPStatus.OK) -> None:
     data = json.dumps(payload, ensure_ascii=False).encode("utf-8")
     handler.send_response(status)
+    send_cors_headers(handler)
     handler.send_header("Content-Type", "application/json; charset=utf-8")
     handler.send_header("Content-Length", str(len(data)))
     handler.send_header("Cache-Control", "no-cache")
@@ -50,6 +65,7 @@ def serve_static(handler, request_path: str, static_root: Path) -> None:
         content_type = f"{content_type}; charset=utf-8"
 
     handler.send_response(HTTPStatus.OK)
+    send_cors_headers(handler)
     handler.send_header("Content-Type", content_type)
     handler.send_header("Cache-Control", "no-cache")
     handler.end_headers()

@@ -2,8 +2,11 @@
 
 from __future__ import annotations
 
+import base64
 import re
+from io import BytesIO
 
+import fitz
 from src.services.localization_service import copy_for
 
 
@@ -14,6 +17,52 @@ MEAL_TOKENS = {
     "with food": "with_food",
     "bedtime": "bedtime",
 }
+IMAGE_OCR_WARNING = (
+    "Image prescription uploaded, but OCR is not configured in this local backend. "
+    "Please type or paste the medicine text from the image for a detailed explanation."
+)
+
+
+def decode_attachment_content(attachment: dict | None) -> bytes:
+    if not attachment:
+        return b""
+
+    content = attachment.get("contentBase64") or ""
+    if "," in content:
+        content = content.split(",", 1)[1]
+
+    try:
+        return base64.b64decode(content)
+    except (ValueError, TypeError):
+        return b""
+
+
+def extract_pdf_text(data: bytes) -> str:
+    if not data:
+        return ""
+
+    with fitz.open(stream=data, filetype="pdf") as document:
+        return "\n".join(page.get_text("text").strip() for page in document).strip()
+
+
+def extract_attachment_text(attachment: dict | None) -> tuple[str, list[str]]:
+    if not attachment:
+        return "", []
+
+    mime_type = (attachment.get("mimeType") or "").lower()
+    file_name = (attachment.get("name") or "").lower()
+    data = decode_attachment_content(attachment)
+
+    if mime_type == "application/pdf" or file_name.endswith(".pdf"):
+        return extract_pdf_text(data), []
+
+    if mime_type.startswith("text/") or file_name.endswith((".txt", ".md", ".csv")):
+        return data.decode("utf-8", errors="ignore").strip(), []
+
+    if mime_type.startswith("image/") or file_name.endswith((".png", ".jpg", ".jpeg", ".webp")):
+        return "", [IMAGE_OCR_WARNING]
+
+    return "", [f"Unsupported prescription file type: {attachment.get('name') or mime_type or 'unknown file'}"]
 
 
 def parse_schedule(line: str) -> tuple[str | None, list[str]]:
@@ -67,9 +116,13 @@ def extract_medicine_name(line: str) -> str:
     return cleaned or "Medicine name unclear"
 
 
-def explain_prescription(text: str, language: str = "en") -> dict:
+def explain_prescription(text: str, language: str = "en", attachment: dict | None = None) -> dict:
     copy = copy_for(language)["prescription"]
+    attachment_text, attachment_warnings = extract_attachment_text(attachment)
+    source_text = text.strip() or attachment_text
     lines = [line.strip(" -•\t") for line in text.splitlines() if line.strip()]
+    if attachment_text and not lines:
+        lines = [line.strip(" -•\t") for line in attachment_text.splitlines() if line.strip()]
     parsed_lines = []
     seen_abbr = set()
 
@@ -101,5 +154,9 @@ def explain_prescription(text: str, language: str = "en") -> dict:
     return {
         "lines": parsed_lines,
         "legend": [{"abbr": abbr, "meaning": copy["abbr_meanings"][abbr]} for abbr in sorted(seen_abbr) if abbr in copy["abbr_meanings"]],
-        "warnings": [copy["warnings"]["not_diagnosis"], copy["warnings"]["unclear"]],
+        "warnings": [
+            *attachment_warnings,
+            copy["warnings"]["not_diagnosis"],
+            copy["warnings"]["unclear"] if source_text else "No readable prescription text was found.",
+        ],
     }
