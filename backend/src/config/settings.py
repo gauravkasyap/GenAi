@@ -30,7 +30,7 @@ def _load_env_file(path: Path) -> None:
 _load_env_file(ENV_FILE)
 
 STATIC_ROOT = Path(os.environ.get("STATIC_DIR", BACKEND_ROOT / "static")).resolve()
-HOST = os.environ.get("HOST", ""0.0.0.0"")
+HOST = os.environ.get("HOST", "0.0.0.0")
 PORT = int(os.environ.get("PORT", "8000"))
 APP_DEBUG = os.environ.get("APP_DEBUG", "false").strip().lower() in {"1", "true", "yes", "on"}
 SERVER_NAME = os.environ.get("SERVER_NAME", "GenAi/0.2")
