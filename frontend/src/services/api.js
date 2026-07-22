@@ -88,6 +88,14 @@ export function analyzeSymptoms(payload) {
   });
 }
 
+export function askChatQuestion(payload) {
+  return requestJson("/api/chat", {
+    method: "POST",
+    headers: JSON_HEADERS,
+    body: JSON.stringify(payload),
+  });
+}
+
 export function explainPrescriptionRequest(payload) {
   return requestJson("/api/prescription/explain", {
     method: "POST",
